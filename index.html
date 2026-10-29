@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>املاک نگین</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&family=Lalezar&display=swap">
+<style>
+:root{
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --wood:#d9b98b;--wood-d:#b98f5a;--wood-l:#f4ead9;
+  --bg:#f3efe8;--card:#fbf9f5;--ink:#2e3135;--mute:#6b7076;--gray:#4a4f55;--line:#ddd5c8;--accent:#a67c4a;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#1f2225;--card:#2a2e32;--ink:#ece8e1;--mute:#a3a8ad;--gray:#15171a;--line:#3a3f44;--wood-l:#34302a;--accent:#d2a76d;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#1f2225;--card:#2a2e32;--ink:#ece8e1;--mute:#a3a8ad;--gray:#15171a;--line:#3a3f44;--wood-l:#34302a;--accent:#d2a76d;color-scheme:dark}
+:root[data-theme="dark"] .specs{color:var(--mute)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Vazirmatn',Tahoma,sans-serif;line-height:1.8}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{background:var(--gray);color:#f1ece3;border-bottom:4px solid var(--wood)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:14px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.4rem}
+.logo i{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--wood),var(--wood-d));display:grid;place-items:center;color:#3b2d1a;font-style:normal}
+nav a{color:#d8d3ca;text-decoration:none;margin-inline-start:18px;font-size:.95rem}
+nav a:hover{color:var(--wood)}
+.hero{position:relative;padding:76px 0 92px;border-bottom:1px solid #8a6a43;color:#3a2a18;
+background:
+radial-gradient(ellipse at 50% 0%,rgba(255,244,222,.55),transparent 65%),
+radial-gradient(ellipse at 50% 120%,rgba(70,45,20,.35),transparent 60%),
+url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='420'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0035 0.11' numOctaves='5' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .27 0 0 0 0 .12 0 0 0 1.5 -.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"),
+repeating-linear-gradient(0deg,transparent 0 126px,rgba(70,45,20,.38) 126px 128px,rgba(255,240,215,.35) 128px 129px),
+linear-gradient(100deg,#e6c99b 0%,#d8b583 35%,#e9d0a4 60%,#d2ac78 100%)}
+.hero .wrap{position:relative;text-align:center}
+.hero h1{margin:0 auto 14px;max-width:820px;font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400;font-size:clamp(1.8rem,4.6vw,3rem);line-height:1.7;color:#35250f;text-shadow:0 1px 0 rgba(255,246,228,.7),0 2px 14px rgba(255,240,210,.5)}
+.hero h1 b{font-weight:400;color:#6b4519}
+.hero p{margin:0 auto;color:#5a4328;max-width:560px;font-weight:600}
+.filters{margin-top:-44px;position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+input,select,button{font-family:inherit;font-size:.95rem}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.sec{padding:36px 0 16px;display:flex;justify-content:space-between;align-items:baseline}
+.sec h2{margin:0;font-size:1.3rem}
+.sec span{color:var(--mute);font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;padding-bottom:40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.12)}
+.ph{height:170px;background:linear-gradient(135deg,#8b9096,#5c6168);display:grid;place-items:center;color:rgba(255,255,255,.7);font-size:3rem;position:relative;background-size:cover;background-position:center}
+.tag{position:absolute;top:10px;right:10px;background:var(--wood);color:#3b2d1a;font-size:.78rem;font-weight:600;padding:2px 12px;border-radius:99px}
+.demo{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.45);color:#fff;font-size:.7rem;padding:1px 8px;border-radius:99px}
+.cb{padding:14px 16px 16px}
+.cb h3{margin:0 0 2px;font-size:1.02rem}
+.loc{color:var(--mute);font-size:.85rem}
+.specs{display:flex;gap:14px;margin:10px 0;font-size:.85rem;color:var(--gray);flex-wrap:wrap}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .specs{color:var(--mute)}}
+.price{font-weight:800;color:var(--accent);font-size:1.05rem}
+.empty{grid-column:1/-1;text-align:center;color:var(--mute);padding:40px}
+dialog{border:0;border-radius:18px;padding:0;max-width:560px;width:calc(100% - 32px);background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog .ph{height:240px}
+.dc{padding:20px 22px 24px}
+.dc table{width:100%;border-collapse:collapse;margin:12px 0}
+.dc td{padding:7px 0;border-bottom:1px dashed var(--line);font-size:.92rem}
+.dc td:first-child{color:var(--mute);width:40%}
+.btn{display:inline-block;background:var(--gray);color:#f1ece3;border:0;padding:10px 20px;border-radius:10px;cursor:pointer;text-decoration:none}
+.btn.w{background:var(--wood);color:#3b2d1a;font-weight:600}
+.about{background:var(--card);border-top:1px solid var(--line);padding:36px 0}
+footer{background:var(--gray);color:#cfcac1;padding:22px 0;font-size:.9rem;text-align:center}
+.tg{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#f1ece3;border-radius:10px;width:40px;height:40px;cursor:pointer;font-size:1.15rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}.stats div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}.stats b{display:block;font-size:1.8rem;color:var(--accent);font-family:'Lalezar',sans-serif;font-weight:400}.stats span{color:var(--mute);font-size:.85rem}
+.heart{position:absolute;bottom:10px;left:10px;border:0;background:rgba(0,0,0,.4);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.1rem}.heart.on{background:#c0392b}
+.fb{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:3px 14px;cursor:pointer;margin-inline-end:10px;font-family:inherit}
+.mapbox{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px}.mapbox svg{width:100%;height:auto;display:block}
+.land{fill:var(--wood-l);stroke:var(--wood-d);stroke-width:2}.road{stroke:var(--line);stroke-width:5;fill:none}.halo{fill:rgba(166,124,74,.25)}.pin{cursor:pointer}.pin:hover .halo{fill:rgba(166,124,74,.55)}.mt{fill:var(--mute);font-size:14px;font-family:Vazirmatn,sans-serif}
+.form{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}.form .full{grid-column:1/-1}textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-family:inherit;min-height:80px}
+details{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:10px 0}summary{cursor:pointer;font-weight:600}details p,details li{color:var(--mute);font-size:.93rem}
+.adm{background:var(--wood-l);border:1px dashed var(--wood-d);border-radius:14px;padding:14px;margin:20px 0}
+:root{--blue:#1b4a8f}:root[data-theme="dark"]{--blue:#7fb0f5}
+header{background:linear-gradient(180deg,#1a3d70,#0f2548);border-bottom:4px solid #b98f5a}
+footer{background:#0f2548}
+.btn{background:#173a6e;color:#fff}.btn:hover{background:#1f4f94}.btn.w{background:linear-gradient(135deg,#e0c498,#b98f5a);color:#2b1d0c}
+.price,.stats b{color:var(--blue)}.stats div{border-top:3px solid var(--blue)}
+.filters{border-top:4px solid var(--blue)}
+.sec h2{position:relative;padding-inline-start:16px}.sec h2::before{content:'';position:absolute;inset-inline-start:0;top:.2em;bottom:.2em;width:5px;border-radius:3px;background:var(--blue)}
+.card{border-radius:20px}.card:hover{box-shadow:0 16px 34px rgba(20,48,92,.22)}
+.ph{background-image:linear-gradient(135deg,#2c5a9e,#10284f)}
+.fab{background:var(--blue)}.about{border-top:3px solid var(--blue)}
+.hero{padding:84px 0 108px;background-color:#efe2c4;background-repeat:no-repeat,no-repeat,repeat;background-size:auto,auto,800px 480px;background-image:radial-gradient(ellipse at 50% 0%,rgba(255,244,222,.5),transparent 60%),radial-gradient(ellipse at 50% 115%,rgba(60,40,15,.28),transparent 60%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='480'%3E%3Cdefs%3E%3Cfilter id='g' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004 0.5' numOctaves='3' seed='4' result='n'/%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.01 0.02' numOctaves='2' seed='9' result='w'/%3E%3CfeDisplacementMap in='n' in2='w' scale='40' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeColorMatrix in='d' values='0 0 0 0 .5 0 0 0 0 .34 0 0 0 0 .18 0 0 0 1.7 -.7'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='800' height='120' fill='rgb(241,227,198)'/%3E%3Crect y='120' width='800' height='120' fill='rgb(233,214,179)'/%3E%3Crect y='240' width='800' height='120' fill='rgb(246,234,209)'/%3E%3Crect y='360' width='800' height='120' fill='rgb(228,207,170)'/%3E%3Crect width='800' height='480' filter='url(%23g)'/%3E%3Cg fill='none' stroke='rgb(140,100,55)' stroke-opacity='.3'%3E%3Cellipse cx='560' cy='180' rx='46' ry='10'/%3E%3Cellipse cx='560' cy='180' rx='30' ry='6'/%3E%3Cellipse cx='560' cy='180' rx='14' ry='3'/%3E%3Cellipse cx='170' cy='410' rx='40' ry='9'/%3E%3Cellipse cx='170' cy='410' rx='22' ry='5'/%3E%3C/g%3E%3Cg fill='rgb(120,85,45)' fill-opacity='.4'%3E%3Crect y='119' width='800' height='2'/%3E%3Crect y='239' width='800' height='2'/%3E%3Crect y='359' width='800' height='2'/%3E%3Crect y='478' width='800' height='2'/%3E%3C/g%3E%3C/svg%3E")}
+.glass{max-width:860px;margin:0 auto;padding:38px 28px 34px;border-radius:26px;background:linear-gradient(160deg,rgba(18,46,92,.82),rgba(10,28,58,.88));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);box-shadow:0 24px 60px rgba(10,20,40,.45)}
+.hero h1{color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.35)}.hero h1 b{color:#f3d6a2}.hero p{color:#dfe8f7}
+.mapbox{padding:16px;border-radius:26px;box-shadow:0 16px 44px rgba(20,48,92,.15)}
+.st{stroke:var(--line);stroke-width:2;fill:none;opacity:.8}.park{fill:#8fc08a;opacity:.5}.road{stroke:var(--wood-d);stroke-opacity:.5;stroke-width:9;stroke-linecap:round}
+.pl{fill:var(--ink);font-size:14px;font-weight:600;font-family:Vazirmatn,sans-serif;paint-order:stroke;stroke:var(--card);stroke-width:4px}.halo{fill:rgba(27,74,143,.22)}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(166,124,74,.55)}100%{box-shadow:0 0 0 18px rgba(166,124,74,0)}}
+.hero h1{animation:up .9s both}.hero p{animation:up .9s .25s both}.filters{animation:up .9s .45s both}
+.card{opacity:0;transform:translateY(26px);transition:opacity .6s,transform .6s,box-shadow .25s}
+.card.in{opacity:1;transform:none}
+.card.in:hover{transform:translateY(-6px)}
+.card .ph{transition:transform .5s}.card:hover .ph{transform:scale(1.04)}
+.card{overflow:hidden}
+.phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:16px}
+.phones a{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 16px;text-decoration:none;color:var(--ink);font-weight:800;font-size:1.15rem;text-align:center;transition:.2s}
+.phones a:hover{background:var(--wood);color:#3b2d1a;transform:translateY(-3px)}
+.phones small{display:block;font-weight:400;color:var(--mute);font-size:.78rem}
+.fab{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:54px;height:54px;border-radius:50%;background:var(--wood-d);color:#fff;display:grid;place-items:center;font-size:1.5rem;text-decoration:none;animation:pulse 2s infinite;z-index:5}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.card{opacity:1;transform:none}}
+@media (max-width:700px){.filters{grid-template-columns:1fr}.hero h1{font-size:1.6rem}nav{display:none}.stats{grid-template-columns:repeat(2,1fr)}.form{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="logo"><i>ن</i> املاک نگین</div>
+  <nav><a href="#map">نقشه</a><a href="#own">ملک دارم</a><a href="#guide">راهنما</a><a href="#list">فایل‌ها</a><a href="#about">درباره ما</a><a href="#contact">تماس</a></nav><button class="tg" id="tg" aria-label="حالت شب و روز">☾</button>
+</div></header>
+
+<section class="hero"><div class="wrap"><div class="glass">
+  <h1>خانه‌ای که دنبالش بودید،<br><b>در منطقه ۱۸</b> منتظر شماست</h1>
+  <p>با مشاوران باتجربه‌ی املاک نگین، خرید، فروش و رهن و اجاره‌ای مطمئن و بی‌دغدغه داشته باشید</p>
+</div></div></section>
+
+<div class="wrap">
+  <div class="filters">
+    <input id="q" placeholder="جستجو در عنوان یا محله…">
+    <select id="type"><option value="">همه‌ی نوع معامله</option><option>فروش</option><option>رهن و اجاره</option></select>
+    <select id="sort"><option value="new">جدیدترین</option><option value="pa">ارزان‌ترین</option><option value="pd">گران‌ترین</option><option value="ar">بیشترین متراژ</option></select>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="sec" id="list"><h2>فایل‌های ملکی</h2><span><button class="fb" id="fb" onclick="favOnly=!favOnly;render()">♡ علاقه‌مندی‌ها</button><span id="count"></span></span></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<section class="wrap" id="map" style="padding-bottom:30px;max-width:none"><div class="sec"><h2>نقشه‌ی فایل‌ها در منطقه ۱۸</h2><span>● فروش · ● اجاره</span></div>
+<div class="mapbox"><svg viewBox="0 0 900 520" role="img" aria-label="نقشه‌ی شماتیک منطقه ۱۸"><defs><clipPath id="cl"><path d="M90 120 Q200 30 450 45 Q720 25 820 140 Q880 260 790 390 Q650 490 440 480 Q200 495 110 360 Q40 240 90 120Z"/></clipPath></defs><path class="land" d="M90 120 Q200 30 450 45 Q720 25 820 140 Q880 260 790 390 Q650 490 440 480 Q200 495 110 360 Q40 240 90 120Z"/><g clip-path="url(#cl)"><path class="st" d="M0 130H900M0 190H900M0 250H900M0 310H900M0 370H900M0 430H900M150 0V520M240 0V520M330 0V520M420 0V520M510 0V520M600 0V520M690 0V520M780 0V520"/><rect x="560" y="300" width="130" height="90" rx="14" class="park"/><rect x="170" y="190" width="110" height="80" rx="14" class="park"/><rect x="610" y="120" width="90" height="60" rx="12" class="park"/></g><path class="road" d="M60 300 Q450 170 860 260"/><path class="road" d="M430 30 Q470 250 420 500"/><path class="road" d="M130 440 Q420 330 780 80"/><g transform="translate(840 60)"><circle r="24" class="halo"/><path d="M0 -16L7 7L0 2L-7 7Z" fill="var(--blue)"/><text y="-30" text-anchor="middle" class="mt">شمال</text></g><text x="450" y="505" text-anchor="middle" class="mt">منطقه ۱۸ — نمایش شماتیک</text><g id="pins"></g></svg></div>
+<p style="color:var(--mute);font-size:.85rem">این نقشه شماتیک است و محل تقریبی فایل‌ها را نشان می‌دهد؛ روی هر نقطه بزنید تا جزئیات باز شود.</p></section>
+<section class="wrap" id="guide" style="padding-bottom:30px"><div class="sec"><h2>راهنمای خرید و اجاره</h2></div>
+<details><summary>نکات مهم پیش از خرید ملک</summary><ul><li>مشخصات سند را با مالک و مدارک رسمی تطبیق دهید.</li><li>وضعیت ملک را از نظر رهن، وام و بازداشت استعلام کنید.</li><li>در ساعت‌های مختلف روز از ملک و محله بازدید کنید.</li><li>تاریخ تحویل و خسارت تأخیر را دقیق در قرارداد بنویسید.</li><li>در صورت نیاز با وکیل مشورت کنید.</li></ul></details>
+<details><summary>نکات رهن و اجاره</summary><ul><li>قرارداد را رسمی و با کد رهگیری از طریق بنگاه دارای مجوز ببندید.</li><li>هنگام تحویل، وضعیت خانه را با عکس ثبت کنید.</li><li>شارژ، قبوض و هزینه‌ی تعمیرات را در قرارداد مشخص کنید.</li><li>پیش از پرداخت رهن، مدارک مالکیت را ببینید.</li></ul></details>
+<details><summary>چطور ملک خود را سریع‌تر بفروشیم یا اجاره بدهیم؟</summary><ul><li>خانه را تمیز و مرتب کنید و در نور روز عکس بگیرید.</li><li>قیمت را با مشورت مشاور و بر اساس فایل‌های مشابه محله تعیین کنید.</li><li>مدارک ملک را از قبل آماده داشته باشید.</li></ul></details>
+<p style="color:var(--mute);font-size:.8rem">این مطالب عمومی است و جای مشاوره‌ی حقوقی نمی‌گیرد.</p></section>
+<section class="about" id="own"><div class="wrap"><h2>ملک دارید؟ فایل خود را ثبت کنید</h2><p style="color:var(--mute)">اطلاعات ملک را وارد کنید؛ پس از بررسی مشاور، در سایت قرار می‌گیرد.</p>
+<div class="form"><input id="s_name" placeholder="نام شما"><input id="s_phone" placeholder="شماره‌ی تماس" inputmode="tel"><select id="s_type"><option>فروش</option><option>رهن و اجاره</option></select><input id="s_area" placeholder="محله"><input id="s_size" type="number" placeholder="متراژ"><input id="s_rooms" type="number" placeholder="تعداد خواب"><input id="s_price" type="number" placeholder="قیمت یا رهن (تومان)"><input id="s_rent" type="number" placeholder="اجاره‌ی ماهانه (تومان)"><textarea class="full" id="s_desc" placeholder="توضیحات"></textarea><div class="full"><button class="btn w" onclick="sendSub()">ثبت فایل</button></div><div class="full" id="smsg" style="color:var(--mute)"></div></div></div></section>
+<div class="wrap" id="admin" hidden></div>
+<section class="about" id="about"><div class="wrap">
+  <h2>درباره‌ی املاک نگین</h2>
+  <p>متن معرفی مشاور و سابقه‌ی کاری در اینجا قرار می‌گیرد.</p>
+  <div class="phones" id="contact">
+    <a href="tel:02166397146"><small>تلفن ثابت (۰۲۱)</small>۶۶۳۹۷۱۴۶</a>
+    <a href="tel:02166397149"><small>تلفن ثابت (۰۲۱)</small>۶۶۳۹۷۱۴۹</a>
+    <a href="tel:09124770663"><small>اکبر پژوهی‌فرد · همراه</small>۰۹۱۲۴۷۷۰۶۶۳</a>
+    <a href="tel:09198034219"><small>مجید بابایی · همراه</small>۰۹۱۹۸۰۳۴۲۱۹</a>
+  </div>
+  <div hidden> <span style="color:var(--mute);margin-inline-start:10px">شماره‌ی تماس: (به‌زودی)</span></div>
+</div></section>
+<footer>© املاک نگین — منطقه ۱۸ تهران</footer>
+
+<a class="fab" href="tel:09124770663" aria-label="تماس با ما">☎</a>
+<dialog id="dlg"></dialog>
+
+<script>
+// ==== داده‌ی فایل‌ها: برای افزودن فایل جدید فقط یک آبجکت به این آرایه اضافه کنید ====
+// img: آدرس عکس (data URI) — در صورت نبودن، تصویر پیش‌فرض نمایش داده می‌شود
+const LISTINGS=[
+ {id:1,demo:1,mx:30,my:40,title:"آپارتمان نوساز ۸۵ متری",type:"فروش",area:"منطقه ۱۸ – محله نمونه ۱",size:85,rooms:2,age:2,floor:"۳ از ۵",price:4200000000,parking:true,elevator:true,storage:true,desc:"نورگیر عالی، سند تک‌برگ، کابینت و کف‌پوش نو.",date:3},
+ {id:2,demo:1,mx:55,my:65,title:"آپارتمان ۶۵ متری شیک",type:"رهن و اجاره",area:"منطقه ۱۸ – محله نمونه ۲",size:65,rooms:1,age:5,floor:"۲ از ۴",price:500000000,rent:12000000,parking:true,elevator:false,storage:true,desc:"مناسب زوج یا خانواده‌ی کوچک، نزدیک مترو.",date:2},
+ {id:3,demo:1,mx:72,my:35,title:"آپارتمان ۱۱۰ متری سه‌خوابه",type:"فروش",area:"منطقه ۱۸ – محله نمونه ۳",size:110,rooms:3,age:8,floor:"۴ از ۶",price:6100000000,parking:true,elevator:true,storage:true,desc:"پلان کاربردی، دسترسی آسان به بزرگراه.",date:1}
+];
+let DB=null,DBL=[],SUB=[],REJ=[],FAV=[],favOnly=false,sd=0;try{FAV=JSON.parse(localStorage.getItem('fav')||'[]')}catch(e){}
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const clean=l=>{const o={...l};['title','area','desc','floor','type'].forEach(k=>{o[k]=esc(o[k])});delete o.img;return o};
+const N=l=>({rooms:0,age:0,floor:'—',parking:false,elevator:false,storage:false,desc:'',...l});
+const ALL=()=>[...LISTINGS,...DBL.map(clean)].map(N);
+const $=s=>document.querySelector(s), fa=n=>Number(n).toLocaleString('fa-IR');
+const money=l=>l.type==="فروش"?fa(l.price)+" تومان":"رهن "+fa(l.price)+" + اجاره "+fa(l.rent)+" تومان";
+const photo=l=>l.img?`style="background-image:url('${l.img}')"`:"";
+const yn=v=>v?"دارد":"ندارد";
+function render(){
+  const q=$('#q').value.trim(), t=$('#type').value, s=$('#sort').value;
+  let r=ALL().filter(l=>(!favOnly||FAV.includes(String(l.id)))&&(!t||l.type===t)&&(!q||(l.title+l.area).includes(q)));
+  const k={new:(a,b)=>b.date-a.date,pa:(a,b)=>a.price-b.price,pd:(a,b)=>b.price-a.price,ar:(a,b)=>b.size-a.size}[s];
+  r.sort(k);
+  $('#count').textContent=fa(r.length)+" فایل";
+  $('#grid').innerHTML=r.length?r.map(l=>`<div class="card" onclick="openL('${l.id}')">
+    <div class="ph" ${photo(l)}>${l.img?"":"⌂"}<span class="tag">${l.type}</span><button class="heart ${FAV.includes(String(l.id))?'on':''}" onclick="fav('${l.id}',event)">♥</button>${l.demo?'<span class="demo">نمونه</span>':""}</div>
+    <div class="cb"><h3>${l.title}</h3><div class="loc">${l.area}</div>
+    <div class="specs"><span>${fa(l.size)} متر</span><span>${fa(l.rooms)} خواب</span><span>${l.age?fa(l.age)+" سال ساخت":"نوساز"}</span></div>
+    <div class="price">${money(l)}</div></div></div>`).join(""):'<div class="empty">فایلی با این مشخصات پیدا نشد.</div>';
+  document.querySelectorAll('.card:not(.in)').forEach(c=>io.observe(c));
+  stats();map();$('#fb').style.background=favOnly?'var(--wood)':'';
+}
+function openL(id){
+  const d=$('#dlg'), l=ALL().find(x=>String(x.id)===String(id));
+  if(!l||(d.open&&d.dataset.id===String(id)))return;
+  d.dataset.id=String(id);
+  d.innerHTML=`<div class="ph" ${photo(l)}>${l.img?"":"⌂"}<span class="tag">${l.type}</span></div>
+  <div class="dc"><h2 style="margin:0">${l.title}</h2><div class="loc">${l.area}</div>
+  <table><tr><td>قیمت</td><td>${money(l)}</td></tr><tr><td>متراژ</td><td>${fa(l.size)} متر</td></tr>
+  <tr><td>تعداد خواب</td><td>${fa(l.rooms)}</td></tr><tr><td>طبقه</td><td>${l.floor}</td></tr>
+  <tr><td>پارکینگ</td><td>${yn(l.parking)}</td></tr><tr><td>آسانسور</td><td>${yn(l.elevator)}</td></tr><tr><td>انباری</td><td>${yn(l.storage)}</td></tr></table>
+  <p>${l.desc}</p><a class="btn w" target="_blank" rel="noopener" href="${sh(l,'wa')}">واتساپ</a> <a class="btn w" target="_blank" rel="noopener" href="${sh(l,'tg')}">تلگرام</a> <a class="btn" target="_blank" rel="noopener" href="${gm(l)}">نقشه</a> <a class="btn" href="tel:09124770663">تماس</a> <button class="btn" onclick="$('#dlg').close()">بستن</button></div>`;
+  d.showModal();try{location.hash='l-'+id}catch(e){}
+}
+$('#dlg').addEventListener('click',e=>{if(e.target.id==='dlg')e.target.close()});
+['q','type','sort'].forEach(i=>$('#'+i).addEventListener('input',render));
+const BASE=location.origin+location.pathname;
+function gm(l){const q=l.lat?l.lat+','+l.lng:encodeURIComponent('تهران، '+String(l.area).replace(/&[^;]+;/g,''));return 'https://www.google.com/maps/search/?api=1&query='+q}
+function sh(l,k){const u=BASE+'#l-'+l.id,t=l.title+' — '+money(l)+' — '+l.area;return k==='wa'?'https://wa.me/?text='+encodeURIComponent(t+'\n'+u):'https://t.me/share/url?url='+encodeURIComponent(u)+'&text='+encodeURIComponent(t)}
+function fav(id,ev){ev.stopPropagation();id=String(id);FAV=FAV.includes(id)?FAV.filter(x=>x!==id):[...FAV,id];try{localStorage.setItem('fav',JSON.stringify(FAV))}catch(e){}render()}
+function stats(){const a=ALL(),v=[[a.length,'فایل فعال'],[a.filter(l=>l.type==='فروش').length,'فایل فروش'],[a.filter(l=>l.type!=='فروش').length,'رهن و اجاره'],[new Set(a.map(l=>l.area)).size,'محله']];
+  $('#stats').innerHTML=v.map(x=>`<div><b data-n="${x[0]}">${fa(x[0])}</b><span>${x[1]}</span></div>`).join('');
+  if(!sd&&a.length){sd=1;document.querySelectorAll('#stats b').forEach(b=>{const n=+b.dataset.n;let s=null;const f=t=>{s=s||t;const p=Math.min((t-s)/900,1);b.textContent=fa(Math.round(n*p));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}}
+function map(){$('#pins').innerHTML=ALL().filter(l=>l.mx!=null).map(l=>`<g class="pin" onclick="openL('${l.id}')" transform="translate(${l.mx*9} ${l.my*5.2})"><circle r="26" class="halo"><animate attributeName="r" values="18;30;18" dur="2.6s" repeatCount="indefinite"/></circle><circle r="12" fill="${l.type==='فروش'?'#b98f5a':'#1b4a8f'}"/><circle r="4" fill="#fff"/><text y="36" text-anchor="middle" class="pl">${fa(l.size)} متر</text><title>${l.title}</title></g>`).join('')}
+function setTheme(t){document.documentElement.dataset.theme=t;$('#tg').textContent=t==='dark'?'☀':'☾';try{localStorage.setItem('theme',t)}catch(e){}}
+(()=>{let t=null;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';setTheme(t)})();
+$('#tg').onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+async function sendSub(){const g=i=>$('#'+i).value.trim();const ty=g('s_type');
+  const d={name:g('s_name'),phone:g('s_phone'),type:ty,area:g('s_area')||'منطقه ۱۸',size:+g('s_size')||0,rooms:+g('s_rooms')||0,price:+g('s_price')||0,rent:+g('s_rent')||0,desc:g('s_desc'),title:(ty==='فروش'?'فروش':'رهن و اجاره')+' آپارتمان '+(g('s_size')?fa(g('s_size'))+' متری':''),date:Date.now()};
+  if(!d.name||!d.phone){$('#smsg').textContent='نام و شماره‌ی تماس را وارد کنید.';return}
+  let ok=false;try{const U=await claude.use('user');const uid=DB&&U&&await U.id();if(uid){await DB.doc('submissions/'+uid).set(d);ok=true}}catch(e){}
+  const tx=['ثبت ملک جدید',d.title,'محله: '+d.area,'قیمت: '+fa(d.price)+(d.rent?' / اجاره: '+fa(d.rent):''),'توضیحات: '+d.desc,'نام: '+d.name,'تلفن: '+d.phone].join('\n');
+  $('#smsg').innerHTML=(ok?'درخواست شما ثبت شد و پس از بررسی نمایش داده می‌شود. ':'برای تکمیل ثبت، اطلاعات را با دکمه‌ی زیر در واتساپ بفرستید. ')+`<a class="btn w" target="_blank" rel="noopener" href="https://wa.me/989124770663?text=${encodeURIComponent(tx)}">ارسال در واتساپ</a>`}
+function adminUI(){const a=$('#admin');const P=SUB.filter(s=>!DBL.some(d=>d.id===s.id)&&!REJ.includes(s.id));a.hidden=!P.length;a.innerHTML=P.length?`<div class="adm"><h3>درخواست‌های ثبت ملک (فقط شما می‌بینید)</h3>${P.map(s=>`<div style="border-top:1px solid var(--line);padding:8px 0"><b>${esc(s.title)}</b> — ${esc(s.area)} — ${esc(s.name)} ${esc(s.phone)}<br>${esc(s.desc)}<br><button class="btn w" onclick="approve('${esc(s.id)}')">تأیید و انتشار</button> <button class="btn" onclick="rej('${esc(s.id)}')">حذف</button></div>`).join('')}</div>`:''}
+async function approve(id){const s=SUB.find(x=>x.id===id);if(!s||!DB)return;const {id:_i,name:_n,phone:_p,...r}=s;try{await DB.collection('listings').doc(id).set(r)}catch(e){alert('خطا در انتشار فایل')}}
+async function rej(id){try{await DB.doc('rejected/'+id).set({t:Date.now()})}catch(e){}}
+function hashOpen(){const m=/^#l-(.+)$/.exec(location.hash);if(m&&ALL().some(x=>String(x.id)===m[1]))openL(m[1])}
+addEventListener('hashchange',hashOpen);
+$('#dlg').addEventListener('close',()=>{try{if(/^#l-/.test(location.hash))history.replaceState(null,'',location.pathname+location.search)}catch(e){}});
+(async()=>{try{if(!window.claude)return;DB=await claude.use('db');if(!DB)return;
+  DB.collection('listings').onSnapshot(s=>{DBL=s.docs.map(d=>({...d.data(),id:d.id}));render();hashOpen();adminUI()},()=>{});
+  const U=await claude.use('user');if(U&&await U.canEdit()){DB.collection('rejected').onSnapshot(s=>{REJ=s.docs.map(d=>d.id);adminUI()},()=>{});DB.collection('submissions').onSnapshot(s=>{SUB=s.docs.map(d=>({...d.data(),id:d.id}));adminUI()},()=>{})}}catch(e){}})();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+render();hashOpen();
+</script>
+</body>
+</html>
